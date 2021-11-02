@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4303BF87273135AE0043C4EE /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303BF86273135AE0043C4EE /* EditViewController.swift */; };
 		4374D39B272EB3E9008AB467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374D39A272EB3E9008AB467 /* AppDelegate.swift */; };
 		4374D39D272EB3E9008AB467 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374D39C272EB3E9008AB467 /* SceneDelegate.swift */; };
 		4374D3A2272EB3E9008AB467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4374D3A0272EB3E9008AB467 /* Main.storyboard */; };
@@ -15,10 +16,11 @@
 		4374D3AF272EB473008AB467 /* Todolist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374D3AE272EB473008AB467 /* Todolist.swift */; };
 		4374D3B2272EC7D6008AB467 /* ToDoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374D3B0272EC7D6008AB467 /* ToDoListCell.swift */; };
 		4374D3B3272EC7D6008AB467 /* ToDoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4374D3B1272EC7D6008AB467 /* ToDoListCell.xib */; };
-		4374D3B5272FC494008AB467 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374D3B4272FC494008AB467 /* ViewController.swift */; };
+		4374D3B5272FC494008AB467 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374D3B4272FC494008AB467 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4303BF86273135AE0043C4EE /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		4374D397272EB3E9008AB467 /* project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4374D39A272EB3E9008AB467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4374D39C272EB3E9008AB467 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +31,7 @@
 		4374D3AE272EB473008AB467 /* Todolist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todolist.swift; sourceTree = "<group>"; };
 		4374D3B0272EC7D6008AB467 /* ToDoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCell.swift; sourceTree = "<group>"; };
 		4374D3B1272EC7D6008AB467 /* ToDoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoListCell.xib; sourceTree = "<group>"; };
-		4374D3B4272FC494008AB467 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4374D3B4272FC494008AB467 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +67,8 @@
 				4374D39A272EB3E9008AB467 /* AppDelegate.swift */,
 				4374D39C272EB3E9008AB467 /* SceneDelegate.swift */,
 				4374D3A0272EB3E9008AB467 /* Main.storyboard */,
-				4374D3B4272FC494008AB467 /* ViewController.swift */,
+				4303BF86273135AE0043C4EE /* EditViewController.swift */,
+				4374D3B4272FC494008AB467 /* AddViewController.swift */,
 				4374D3B0272EC7D6008AB467 /* ToDoListCell.swift */,
 				4374D3B1272EC7D6008AB467 /* ToDoListCell.xib */,
 				4374D3AE272EB473008AB467 /* Todolist.swift */,
@@ -148,8 +151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4374D3B5272FC494008AB467 /* ViewController.swift in Sources */,
+				4374D3B5272FC494008AB467 /* AddViewController.swift in Sources */,
 				4374D39B272EB3E9008AB467 /* AppDelegate.swift in Sources */,
+				4303BF87273135AE0043C4EE /* EditViewController.swift in Sources */,
 				4374D39D272EB3E9008AB467 /* SceneDelegate.swift in Sources */,
 				4374D3AF272EB473008AB467 /* Todolist.swift in Sources */,
 				4374D3B2272EC7D6008AB467 /* ToDoListCell.swift in Sources */,

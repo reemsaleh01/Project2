@@ -6,8 +6,16 @@
 //
 
 import UIKit
+protocol UpdateDelegate{
+    
+    func updateTask(Task: String)
+}
 
-class ViewController: UIViewController {
+class AddViewController: UIViewController {
+    
+
+    
+    var tasks : List!
     
     @IBOutlet weak var Title1: UITextField!
     
@@ -17,7 +25,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var Des: UITextField!
     
     @IBAction func onPress(_ sender: Any) {
-        performSegue(withIdentifier: "saveSegue", sender: nil)
+        tasks.items.append(Task(title: Title1.text!, day: Day.text!, Descripton: Des.text!))
+        navigationController?.popViewController(animated: true)
     }
     override func viewDidLoad() {
     super.viewDidLoad()

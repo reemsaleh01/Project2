@@ -7,35 +7,49 @@
 
 import UIKit
 
-struct ToDoList {
+struct Task {
 var title: String!
 var day: String!
 var Descripton:   String!
 }
+class List {
+    var items = [Task]()
+}
 
-class Todolist: UITableViewController{
+class Todolist: UITableViewController, UpdateDelegate {
+    func updateTask(Task: String) {
+        print(Task)
+        tabelview.reloadData()
+    }
+    
     
     
     @IBOutlet var tabelview: UITableView!
     
     
-    var Tasks : [ToDoList] = [
-        ToDoList(title: "Healthy", day: "Sunday", Descripton: "Drink two liters of water"),
-        ToDoList(title: "Have a dinner", day: "thursday", Descripton: "Have a dinner with my friend")
-    ]
-
+    var Tasks : List = List()
+    var selectedIndex : Int!
    
     @IBAction func deleteAll(_ sender: Any) {
         
         
-        Tasks.removeAll()
+        Tasks.items.removeAll()
         tabelview.reloadData()
-        UserDefaults.standard.set(Tasks, forKey: "Lists")
+        UserDefaults.standard.set(Tasks.items, forKey: "Lists-1")
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        tabelview.reloadData()
+        print(UserDefaults.standard.array(forKey: "Lists-1") as! [Task])
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        Tasks.items.append(Task(title: "Healthy", day: "Sunday", Descripton: "Drink two liters of water"))
+//        Tasks.items.append(Task(title: "Have a dinner", day: "thursday", Descripton: "Have a dinner with my friend"))
+        Tasks.items = UserDefaults.standard.object(forKey: "Lists-1") as! [Task]
+        print(UserDefaults.standard.array(forKey: "Lists-1") as! [Task])
+
         tableView.register(UINib(nibName: "ToDoListCell", bundle: nil), forCellReuseIdentifier: "ListCell")
         
         tableView.rowHeight = 150
@@ -58,22 +72,26 @@ class Todolist: UITableViewController{
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Tasks.count
+        return Tasks.items.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellList = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)as! ToDoListCell
-        cellList.title.text = Tasks[indexPath.row].title
-        cellList.day.text = Tasks[indexPath.row].day
-        cellList.Descripton.text = Tasks[indexPath.row].Descripton
+        cellList.title.text = Tasks.items[indexPath.row].title
+        cellList.day.text = Tasks.items[indexPath.row].day
+        cellList.Descripton.text = Tasks.items[indexPath.row].Descripton
         
         
         // Configure the cell...
 
         return cellList
     }
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("User selected: \(indexPath.row)")
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "editSegue", sender: self)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -91,6 +109,9 @@ class Todolist: UITableViewController{
         if editingStyle == .delete {
             
             // Delete the row from the data source
+            Tasks.items.remove(at: indexPath.item)
+            UserDefaults.standard.set(Tasks.items, forKey: "Lists-1")
+
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -122,5 +143,14 @@ class Todolist: UITableViewController{
         // Pass the selected object to the new view controller.
     }
     */
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "addSegue") {
+        let addVC = segue.destination as! AddViewController
+        addVC.tasks = Tasks
+        } else if (segue.identifier == "editSegue") {
+            let editVC = segue.destination as! EditViewController
+            editVC.tasks = Tasks
+            editVC.selectedIndex = selectedIndex
+    }
+    }
 }
